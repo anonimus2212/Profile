@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SENA Connect - My Profile</title>
+<style>
+:root{--bg:#f0f2f5;--card:#fff;--text:#050505;--muted:#65676b;--blue:#1877f2;--line:#dadde1;--green:#39a900;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#18191a;--card:#242526;--text:#e4e6eb;--muted:#b0b3b8;--line:#3e4042;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#18191a;--card:#242526;--text:#e4e6eb;--muted:#b0b3b8;--line:#3e4042;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:8px 16px}
+.logo{background:var(--green);color:#fff;font-weight:800;border-radius:50%;width:40px;height:40px;display:grid;place-items:center;font-size:13px}
+.search{background:var(--bg);border-radius:20px;padding:9px 14px;color:var(--muted);font-size:14px;flex:0 1 240px}
+.navicons{margin-left:auto;display:flex;gap:10px}
+.navicons span{background:var(--bg);width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:17px}
+.wrap{max-width:940px;margin:0 auto}
+.head{background:var(--card);border-radius:0 0 12px 12px;box-shadow:0 1px 2px #0002}
+.cover{height:260px;background:linear-gradient(135deg,#39a900,#1877f2);position:relative;background-size:cover;background-position:center;cursor:pointer;border-radius:0 0 8px 8px}
+.photo-btn{position:absolute;right:16px;bottom:16px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.88);color:#050505;border:0;border-radius:999px;padding:10px 16px;font-weight:600;font-size:14px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 2px 10px rgba(0,0,0,.25);transition:transform .15s,background .15s}
+.photo-btn:hover{background:#fff;transform:translateY(-2px)}
+.photo-btn svg{width:18px;height:18px}
+.btn{background:#e4e6eb;color:#050505;border:0;border-radius:6px;padding:8px 12px;font-weight:600;font-size:14px;cursor:pointer}
+.btn.blue{background:var(--blue);color:#fff}
+.ident{display:flex;gap:20px;align-items:flex-end;padding:0 24px 16px;margin-top:-44px;flex-wrap:wrap}
+.avatar{width:160px;height:160px;border-radius:50%;border:4px solid var(--card);background:#ccd0d5 center/cover;cursor:pointer;display:grid;place-items:center;font-size:54px;position:relative;flex:none}
+.avatar small{position:absolute;bottom:6px;right:6px;width:38px;height:38px;border-radius:50%;background:var(--card);color:var(--text);border:2px solid var(--line);display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:transform .15s,background .15s}
+.avatar:hover small{background:var(--blue);color:#fff;border-color:var(--blue);transform:scale(1.1)}
+.avatar small svg{width:19px;height:19px}
+.name{flex:1;min-width:200px;padding-bottom:8px}
+.name h1{margin:0;font-size:30px}
+.name p{margin:2px 0;color:var(--muted)}
+.tabs{display:flex;gap:4px;padding:0 16px;border-top:1px solid var(--line);overflow-x:auto}
+.tabs a{padding:14px 16px;color:var(--muted);font-weight:600;font-size:15px;white-space:nowrap}
+.tabs a.on{color:var(--blue);border-bottom:3px solid var(--blue)}
+.grid{display:grid;grid-template-columns:360px 1fr;gap:16px;margin:16px;align-items:start}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.cover{height:180px}}
+.card{background:var(--card);border-radius:8px;padding:16px;box-shadow:0 1px 2px #0002;margin-bottom:16px}
+.card h2{margin:0 0 12px;font-size:20px}
+.row{display:flex;gap:10px;padding:7px 0;font-size:15px;align-items:baseline}
+.row b{min-width:92px;color:var(--muted);font-weight:600}
+[contenteditable]{outline:none;border-radius:4px;flex:1;padding:1px 4px}
+[contenteditable]:hover{background:var(--bg)}
+[contenteditable]:focus{box-shadow:0 0 0 2px var(--blue)}
+.int{border-top:1px solid var(--line);padding:10px 0}
+.int:first-of-type{border-top:0}
+.int h3{margin:0 0 4px;font-size:15px}
+.int p{margin:0;font-size:15px;line-height:1.45}
+.hint{font-size:13px;color:var(--muted);text-align:center;padding:4px 16px 24px}
+input[type=file]{display:none}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">SENA</div>
+  <div class="search">🔍 Search SENA Connect</div>
+  <div class="navicons"><span>🏠</span><span>👥</span><span>💬</span><span>🔔</span></div>
+</nav>
+
+<div class="wrap">
+  <div class="head">
+    <div class="cover" id="cover" title="Click to change cover photo">
+      <button class="photo-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>Edit cover photo</button>
+    </div>
+    <div class="ident">
+      <div class="avatar" id="avatar" title="Click to upload your profile photo">👤<small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></small></div>
+      <div class="name">
+        <h1 contenteditable="true" spellcheck="false">Linkon Joel Vargas</h1>
+        <p contenteditable="true" spellcheck="false">SENA Apprentice · Ficha: 0000000</p>
+        <p>178 friends</p>
+      </div>
+      <div><button class="btn blue">+ Add story</button> <button class="btn">✏️ Edit profile</button></div>
+    </div>
+    <div class="tabs"><a class="on">All</a><a>About</a><a>Friends</a><a>Photos</a><a>Reels</a><a>More ▾</a></div>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>Personal information</h2>
+        <div class="row"><b>👤 Name</b><span contenteditable="true">Linkon Joel Vargas</span></div>
+        <div class="row"><b>🎂 Age</b><span contenteditable="true">18 years old</span></div>
+        <div class="row"><b>💼 Occupation</b><span contenteditable="true">SENA apprentice</span></div>
+        <div class="row"><b>🏠 Hometown</b><span contenteditable="true">Your city here</span></div>
+        <div class="row"><b>⚧ Sex</b><span contenteditable="true">Male</span></div>
+        <div class="row"><b>📞 Phone</b><span contenteditable="true">+57 300 000 0000</span></div>
+        <div class="row"><b>✉️ Email</b><span contenteditable="true">yourname@example.com</span></div>
+        <div class="row"><b>🗣 Languages</b><span contenteditable="true">Spanish (native), English (learning)</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Interests</h2>
+      <div class="int"><h3>📚 Studies</h3><p contenteditable="true">I am studying at SENA because I want to build a career and learn practical skills.</p></div>
+      <div class="int"><h3>🎵 Music</h3><p contenteditable="true">I usually listen to reggaeton when I work out and vallenato when I relax.</p></div>
+      <div class="int"><h3>🎬 Movies</h3><p contenteditable="true">I love action movies because they keep me excited until the end.</p></div>
+      <div class="int"><h3>📺 TV shows</h3><p contenteditable="true">I often watch comedy series with my family on weekends.</p></div>
+      <div class="int"><h3>⚽ Sports</h3><p contenteditable="true">I play soccer with my friends and I go to the gym three times a week.</p></div>
+      <div class="int"><h3>🍽 Food</h3><p contenteditable="true">My favorite food is bandeja paisa, but I also enjoy pizza.</p></div>
+      <div class="int"><h3>🥤 Drinks</h3><p contenteditable="true">I drink fruit juice every morning and sometimes hot chocolate at night.</p></div>
+      <div class="int"><h3>📖 Books</h3><p contenteditable="true">I am not a big reader, but I enjoy short adventure books.</p></div>
+      <div class="int"><h3>🎮 Hobbies</h3><p contenteditable="true">In my free time I play video games and take photos with my phone.</p></div>
+    </div>
+  </div>
+  <div class="hint">💡 Click any text to edit it · Click the circle or the cover to upload photos</div>
+</div>
+
+<input type="file" id="fa" accept="image/*">
+<input type="file" id="fc" accept="image/*">
+<script>
+function wire(box, input, target){
+  box.addEventListener('click', function(){ input.click(); });
+  input.addEventListener('change', function(){
+    var f = input.files && input.files[0]; if(!f) return;
+    var r = new FileReader();
+    r.onload = function(){
+      target.style.backgroundImage = 'url(' + r.result + ')';
+      target.style.backgroundSize = 'cover'; target.style.backgroundPosition = 'center';
+      if(target.id === 'avatar'){ target.firstChild.nodeValue = ''; }
+    };
+    r.readAsDataURL(f);
+  });
+}
+wire(document.getElementById('avatar'), document.getElementById('fa'), document.getElementById('avatar'));
+wire(document.getElementById('cover'), document.getElementById('fc'), document.getElementById('cover'));
+</script>
+</body>
+</html>
